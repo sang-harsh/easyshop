@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/easyshop/static/css/main.6b4008de.css",
+    "main.js": "/easyshop/static/js/main.983ec9f8.js",
+    "static/js/787.04d21cb6.chunk.js": "/easyshop/static/js/787.04d21cb6.chunk.js",
+    "static/media/card4.jpg": "/easyshop/static/media/card4.ae5a420fca5988cdd362.jpg",
+    "static/media/loading.gif": "/easyshop/static/media/loading.51279b93e1b2c905f7ea.gif",
+    "static/media/card2.jpg": "/easyshop/static/media/card2.3b1d119efc2ab0db4370.jpg",
+    "static/media/card5.jpg": "/easyshop/static/media/card5.0470b3a04c9c8c19c8f5.jpg",
+    "static/media/emptyCart.gif": "/easyshop/static/media/emptyCart.4f1e2972307ae534906f.gif",
+    "static/media/card1.jpg": "/easyshop/static/media/card1.92a0792083bfcfa27d7e.jpg",
+    "static/media/card3.jpg": "/easyshop/static/media/card3.239e7973135464b133f2.jpg",
+    "index.html": "/easyshop/index.html",
+    "main.6b4008de.css.map": "/easyshop/static/css/main.6b4008de.css.map",
+    "main.983ec9f8.js.map": "/easyshop/static/js/main.983ec9f8.js.map",
+    "787.04d21cb6.chunk.js.map": "/easyshop/static/js/787.04d21cb6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6b4008de.css",
+    "static/js/main.983ec9f8.js"
+  ]
+}
