@@ -87,7 +87,6 @@ export default function LoginPage() {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
             >
@@ -119,11 +118,12 @@ export default function LoginPage() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 1, mb: 2 }}
+                onClick={handleSubmit}
               >
                 Login
               </Button>
 
-              <Button type="submit" fullWidth variant="outlined"startIcon={ <GoogleIcon/>} onClick={signInWithGoogle}>
+              <Button fullWidth variant="outlined"startIcon={ <GoogleIcon/>} onClick={signInWithGoogle}>
                 Sign In with Google
               </Button>
               
