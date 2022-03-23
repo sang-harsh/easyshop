@@ -28,20 +28,21 @@ export function AuthProvider({children}) {
       function logout(){
             return auth.signOut();
       }
-      function signInWithGoogle(){
-            return firebase.auth()
-            .signInWithPopup(provider)
-            .then((result) => {
-            //   console.log(result);
-              const name = result.user.displayName;
-              const email = result.user.email;
-              const pic = result.user.photoURL;
-            
-              localStorage.setItem("name",name);
-              localStorage.setItem("email",email);
-              localStorage.setItem("pic",pic);
-            
-            }).catch((error)=>console.log(error));
+      async function signInWithGoogle(){
+            try {
+                  const result = await firebase.auth()
+                        .signInWithPopup(provider);
+                  //   console.log(result);
+                  const name = result.user.displayName;
+                  const email = result.user.email;
+                  const pic = result.user.photoURL;
+
+                  localStorage.setItem("name", name);
+                  localStorage.setItem("email", email);
+                  localStorage.setItem("pic", pic);
+            } catch (error) {
+                  return console.log(error);
+            }
       }
       
       useEffect(() => {
