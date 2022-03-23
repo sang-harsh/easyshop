@@ -6,10 +6,6 @@ import { useHistory} from "react-router-dom";
 import {Store} from "react-notifications-component";
 
 const AuthContext = React.createContext();
-var provider = new firebase.auth.GoogleAuthProvider();
-const data =  JSON.parse(localStorage.getItem("cart"));
-const flag = JSON.parse(localStorage.getItem("buynow"));
-
 
 export function useAuth(){
       return useContext(AuthContext);
@@ -18,6 +14,9 @@ export function useAuth(){
 export function AuthProvider({children}) {
       const [currentUser, setCurrentUser] = useState();
       const history = useHistory();
+      var provider = new firebase.auth.GoogleAuthProvider();
+      const data =  JSON.parse(localStorage.getItem("cart"));
+      const flag = JSON.parse(localStorage.getItem("buynow"));
 
       function signup(email,password){
             return auth.createUserWithEmailAndPassword(email,password);
@@ -30,9 +29,7 @@ export function AuthProvider({children}) {
       }
       async function signInWithGoogle(){
             try {
-                  const result = await firebase.auth()
-                        .signInWithPopup(provider);
-                  //   console.log(result);
+                  const result = await firebase.auth().signInWithPopup(provider);
                   const name = result.user.displayName;
                   const email = result.user.email;
                   const pic = result.user.photoURL;
@@ -40,6 +37,15 @@ export function AuthProvider({children}) {
                   localStorage.setItem("name", name);
                   localStorage.setItem("email", email);
                   localStorage.setItem("pic", pic);
+
+                  if((data!==null && data!==undefined)||flag===true){
+                        notification("Login Successfully!", "Proceeding to Checkout", "success");
+                        setTimeout( function() {history.push("/checkout")}, 1000); 
+                  }else{  
+                        notification("Wonderful!", "Login Successfully", "success");
+                        setTimeout( function() {history.push("/")}, 1000); 
+                  }
+
             } catch (error) {
                   return console.log(error);
             }
