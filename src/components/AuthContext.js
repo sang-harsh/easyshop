@@ -41,12 +41,6 @@ export function AuthProvider({children}) {
               localStorage.setItem("email",email);
               localStorage.setItem("pic",pic);
             
-              if((data!==null && data!==undefined)||flag===true){
-                  setTimeout( function() {history.push("/checkout")}, 1000); 
-                }else{  
-                  setTimeout( function() {history.push("/")}, 1000); 
-            }
-            
             }).catch((error)=>console.log(error));
       }
       
