@@ -2,8 +2,8 @@ import {makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
       greyBox:{
-            width: '100vw',
-            padding: 50,
+            width: '80vw',
+            padding: 100,
             color: 'red',
       },
       imgContainer:{    

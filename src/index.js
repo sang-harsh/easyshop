@@ -12,7 +12,8 @@ const theme1=createTheme({
   palette:{
     primary: teal,
     secondary: purple,
-  }
+  },
+
 });
 
 

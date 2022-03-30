@@ -7,14 +7,12 @@ const useStyles = makeStyles((theme)=>({
             backgroundColor: 'black',
             color: 'white',
             height: '40vh',
-             
             display:'flex',
             justifyContent: 'space-evenly',
-            alignItems: 'center'
+            alignItems: 'center',
       },
       hover: {
             "&:hover": {
-            //  backgroundColor: 'rgb(7, 177, 77, 0.42)',
               textDecoration: 'underline',
               cursor: 'not-allowed'
             }
@@ -27,7 +25,7 @@ function Footer()
   const classes = useStyles();
   const links = [{
             title: "ABOUT",
-            arr: ["Contact Us","Careers","About Us","Press","Corporate Information"]
+            arr: ["Contact Us","Careers","About Us","Press","Corporate Info"]
       },{
             title: "Policy",
             arr: ["Return Poly","Terms of Use","Security","Privacy","EPR Complaince"]
@@ -44,7 +42,7 @@ function Footer()
       {
             links.map((element)=>{
                   return(
-                        <FooterBlocks title={element.title} arr={element.arr} classes={classes}/>
+                        <FooterBlocks key={element.title} title={element.title} arr={element.arr} classes={classes}/>
                   )
             })
       }

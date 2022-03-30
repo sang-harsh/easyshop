@@ -5,9 +5,10 @@ function FooterBlocks({title,arr, classes}) {
       
       <Box>
             <Box><Typography variant="h5" >{title}</Typography></Box>
+            <br/>
             {
-                  arr.map((ele) => {
-                        return(<Box><Typography variant="subtitle1" className={classes.hover} >{ele}</Typography></Box>)   
+                  arr.map((ele,i) => {
+                        return(<Box key={i}><Typography variant="subtitle1"  className={classes.hover} >{ele}</Typography></Box>)   
                   })
             }
             

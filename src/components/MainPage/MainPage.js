@@ -36,14 +36,14 @@ function MainPage() {
           <CarousalCard/>
 
           <Container maxWidth={false} className={classes.greyBox}>
-          <Grid container spacing={5}>
+          <Grid container spacing={6}>
     
           {products.length !== 0 ? (
           products.map((element, i) => (
 
-            <Grid item sm={3} key={i}>
-              <Card>
-                <CardActionArea>
+            <Grid item lg={3} md={4} sm={6} xs={8} key={i} >
+              <Card variant="outlined">
+                <CardActionArea >
                   <div className={classes.imgContainer}>
                       <CardMedia image={element.image}
                     style={{height: 220, width: 150}} component="div"/>
