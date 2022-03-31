@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../NavBar/NavBar";
 import CarousalCard from "../Carousal/CarousalCard";
-import {Card,CardActions,CardContent,Grid,Button,Typography,CardMedia,CardActionArea,Container} from "@mui/material";
+import {Button,useMediaQuery,Box} from "@mui/material";
 import useStyles from './styles.js';
 import Footer from "../Footer/Footer";
 import {useHistory} from "react-router-dom";
 import {ReactNotifications} from "react-notifications-component";
 import LOADING from "../../utils/loading.gif";
-
+import { shadows } from '@mui/system';
 function MainPage() {
       const classes = useStyles();
       const [products, setProducts] = useState([]);
       const history = useHistory();
+      const isMobile = useMediaQuery('(max-width:768px)');
 
       async function getData() {
         let response = await fetch("https://fakestoreapi.com/products");
@@ -35,40 +36,44 @@ function MainPage() {
           <ReactNotifications />
           <CarousalCard/>
 
-          <Container maxWidth={false} className={classes.greyBox}>
-          <Grid container spacing={6}>
+          <div className={classes.greyBox}>
+      
     
           {products.length !== 0 ? (
           products.map((element, i) => (
 
-            <Grid item lg={3} md={4} sm={6} xs={8} key={i} >
-              <Card variant="outlined">
-                <CardActionArea >
-                  <div className={classes.imgContainer}>
-                      <CardMedia image={element.image}
-                    style={{height: 220, width: 150}} component="div"/>
-                  </div>      
-                <CardContent className={classes.title}>
-                  <Typography variant="h6" noWrap>
+          !isMobile?
+          (<Box className={classes.card} sx={{ boxShadow: 3 ,width: "290px"}}>
+              <div className={classes.imgContainer} style={{height: 100,paddingBottom:100,margin: 20,}}>
+                  <img src={element.image}  alt="Not loaded" style={{height: 220, width: 150}} />
+              </div> 
+              <div className={classes.titlediv} style={{fontSize: '20px'}}>
+                <p className={classes.title} style={{width: '300px',}}>
                   {element.title}
-                  </Typography>
-                </CardContent>
+                </p>
+              </div>
+              <Button variant="contained"  onClick={() => handelDetails(element)} 
+                className={classes.detailsButton}>Details</Button>  
+              </Box>
+          ):( <Box className={classes.card} sx={{boxShadow: 3,width: "185px"}}>
+                <div className={classes.imgContainer} style={{height: 50,paddingBottom:50,margin: 10,}}>
+                  <img src={element.image} style={{height: 110, width: 75}} alt="Not loaded"/>
+                </div>      
+                <div className={classes.titlediv}>
+                  <p className={classes.title} style={{width: '150px',}}>
+                    {element.title}
+                  </p>
+                </div>
+                <Button variant="outlined"  size="small" onClick={() => handelDetails(element)} 
+                  className={classes.detailsButton}>Details</Button>  
+          </Box> )
 
-                </CardActionArea>
-
-                <CardActions>
-                  <Button color="warning" onClick={() => handelDetails(element)}>Details</Button>  
-                </CardActions>
-              </Card>
-            </Grid>
-
-          ))):(<div >
+          ))):(<div className={classes.loadingDiv}>
           <img className={classes.loadingSymbol} src={LOADING} alt="loading" />
-          <div></div>
-        </div>)}
+          </div>)}
             
-          </Grid>
-          </Container>
+      
+          </div>
           <Footer/>  
             
     </div>

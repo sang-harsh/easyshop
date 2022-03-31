@@ -1,23 +1,48 @@
 import {makeStyles } from '@mui/styles';
 
+
+
 export default makeStyles((theme) => ({
       greyBox:{
-            width: '80vw',
-            padding: 100,
-            color: 'red',
+            display:"flex",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
       },
-      imgContainer:{    
-            height: 150,
-            paddingLeft: 90,
-            paddingRight: 80,
-            paddingTop: 30,
-            paddingBottom:100,
+      card:{
+            display:"flex",
+            flexDirection:"column",
+            alignItems: "center",
+            margin: "25px",
+            padding: "10px",
+            borderRadius: "10px"
+      },
+      // imgContainer:{    
+      //       height: 100,
+      //       paddingBottom:100,
+      //       margin: 20,
+      // },
+      titlediv:{
+            display: 'flex',
+            color: '#009688',
+            justifyContent: 'center',
+            
+            fontWeight: '500',
+            alignSelf: "flex-start"
       },
       title:{
             color: '#009688',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+      },
+      detailsButton:{
+            alignSelf:"flex-start",    
+      },
+      loadingDiv:{
+            display:'flex',
+            justifyContent: 'center',
       },
       loadingSymbol:{
-            marginLeft: "28vw",
             height: "45vh",
             width: "45vw",
       }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {AppBar, Toolbar, Box ,IconButton,InputBase} from '@mui/material';
+import {AppBar, Toolbar, Box ,IconButton,InputBase, useMediaQuery} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
@@ -20,6 +20,8 @@ function NavBar() {
   const classes = useStyles();
   const history = useHistory();
   const {currentUser, logout,notification} = useAuth();
+  const isDesktop = useMediaQuery('(min-width:1224px)');
+  const isMobile = useMediaQuery('(max-width:768px)');
 
   const handleLoginLogout = async () => {  
     if(currentUser){
@@ -42,25 +44,29 @@ function NavBar() {
                 </IconButton>
                 </div>
                 <div className={classes.iconsdiv}  >
-                  <img src={TEALLOGO} alt="Not found" height="60" width="150"/>
+                  {
+                    !isMobile?(<img src={TEALLOGO} alt="Not found" height="60" width="150"/>):
+                    (<img src={TEALLOGO} alt="Not found" height="45" width="112"/>)
+                  } 
                 </div>
           </div>
 
-
-          <div display='flex'>
-              <div className={classes.search}>
-                  <div className={classes.searchIcon}>
-                    <IconButton >
-                    <SearchIcon/>
-                    </IconButton >
-                  </div>
-                  <div>
-                  <InputBase placeholder="Search..."classes={{root: classes.inputRoot, input: classes.inputInput}}/>
-                  </div>
-              
-              </div>
-          </div>
-
+          {
+            isDesktop?(<div display='flex'>
+                        <div className={classes.search}>
+                            <div className={classes.searchIcon}>
+                              <IconButton >
+                              <SearchIcon/>
+                              </IconButton >
+                            </div>
+                            <div>
+                            <InputBase placeholder="Search..."classes={{root: classes.inputRoot, input: classes.inputInput}}/>
+                            </div>
+                        
+                        </div>
+                    </div>):(<></>)
+          }
+          
           <Box display='flex'  flexDirection='row'>
                 <div  className={classes.iconsdiv} >
                 <IconButton color='inherit'size="large" onClick={() => history.push("/")}>

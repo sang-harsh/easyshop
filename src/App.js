@@ -11,7 +11,7 @@ import Checkout from "./components/Checkout/Checkout";
 import PrivateRoute from "./components/PrivateRoute"
 
 function App() {
-
+  
   return (
     <AuthProvider>
       <div className="App">
