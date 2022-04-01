@@ -6,10 +6,21 @@ const useStyles = makeStyles((theme)=>({
       footer:{
             backgroundColor: 'black',
             color: 'white',
-            height: '40vh',
             display:'flex',
             justifyContent: 'space-evenly',
             alignItems: 'center',
+            [theme.breakpoints.down('mobile')]: {
+                  fontSize: '12px',
+                  height: '150px',   
+            },
+            [theme.breakpoints.between('mobile','tablet')]: {
+                  height: '180px',
+                  fontSize: '15px',
+            },
+            [theme.breakpoints.up('tablet')]: {
+                  height: '240px',
+                  fontSize: '18px',
+            },
       },
       hover: {
             "&:hover": {
@@ -27,8 +38,8 @@ function Footer()
             title: "ABOUT",
             arr: ["Contact Us","Careers","About Us","Press","Corporate Info"]
       },{
-            title: "Policy",
-            arr: ["Return Poly","Terms of Use","Security","Privacy","EPR Complaince"]
+            title: "POLICY",
+            arr: ["Return Polcy","Terms of Use","Security","Privacy","EPR Complaince"]
       },{
             title: "HELP",
             arr: ["Payments","Shipping","Cancellation","Return","FAQ"]

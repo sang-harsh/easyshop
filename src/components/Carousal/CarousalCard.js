@@ -19,15 +19,8 @@ function CarousalCard() {
           {
             imagesArray.map((element,i)=>{
                 return(
-                    <div>
-                    {
-                    isMobile?
-                    (
-                        <img src={imagesArray[i]} alt="Card  not found"style={{ height: '300px'}}/>
-                    ):(
-                        <img src={imagesArray[i]} alt="Card  not found" style={{ height: '600px'}}/>
-                    )
-                    }
+                    <div key={i}>
+                        <img src={imagesArray[i]} alt="Card  not found" className={classes.carousalImage}/>
                     </div>
                 )
                 

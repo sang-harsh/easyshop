@@ -8,11 +8,31 @@ import ItemDetails from  "./components/ItemDetails/ItemDetails";
 import  {AuthProvider} from "./components/AuthContext";
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
-import PrivateRoute from "./components/PrivateRoute"
+import PrivateRoute from "./components/PrivateRoute";
+
+import {purple, teal} from '@material-ui/core/colors';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 
 function App() {
   
+  const theme1=createTheme({
+    palette:{
+      primary: teal,
+      secondary: purple,
+    },
+    breakpoints: {
+      values: {
+        xs:0,
+        mobile: 600,
+        tablet: 768,
+        laptop: 1224,
+      },
+    },
+  });
+
   return (
+    <ThemeProvider theme={theme1}>
     <AuthProvider>
       <div className="App">
         <Router>
@@ -27,6 +47,7 @@ function App() {
         </Router>
     </div>
     </AuthProvider>
+    </ThemeProvider>
     
   );
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {AppBar, Toolbar, Box ,IconButton,InputBase, useMediaQuery} from '@mui/material';
+import {AppBar, Box ,IconButton,InputBase, useMediaQuery} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
@@ -21,7 +21,6 @@ function NavBar() {
   const history = useHistory();
   const {currentUser, logout,notification} = useAuth();
   const isDesktop = useMediaQuery('(min-width:1224px)');
-  const isMobile = useMediaQuery('(max-width:768px)');
 
   const handleLoginLogout = async () => {  
     if(currentUser){
@@ -36,23 +35,20 @@ function NavBar() {
     <div>
       <AppBar>
         <ReactNotifications/>
-        <Toolbar className={classes.toolbar} >
-          <div style={{display:'flex' ,alignItems: 'center', justifyContent: 'space-evenly'}}>
-                <div  className={classes.iconsdiv} >
-                <IconButton color='inherit'size="large">
-                  <MenuIcon/>
+        <div className={classes.toolbar} >
+          <div className={classes.toolbarLeft}>
+            <div  className={classes.iconsdiv} >
+                <IconButton color='inherit' >
+                  <MenuIcon className={classes.icons}/>
                 </IconButton>
-                </div>
-                <div className={classes.iconsdiv}  >
-                  {
-                    !isMobile?(<img src={TEALLOGO} alt="Not found" height="60" width="150"/>):
-                    (<img src={TEALLOGO} alt="Not found" height="45" width="112"/>)
-                  } 
+            </div>
+                <div className={classes.iconsdiv}  >             
+                    <img src={TEALLOGO} alt="Not found" className={classes.siteLogo}/>
                 </div>
           </div>
 
           {
-            isDesktop?(<div display='flex'>
+            isDesktop?(<div display='flex' className={classes.iconsdiv}>
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                               <IconButton >
@@ -67,26 +63,26 @@ function NavBar() {
                     </div>):(<></>)
           }
           
-          <Box display='flex'  flexDirection='row'>
+          <Box sx={{display: 'flex',alignItems: 'center',justifyContent: 'space-evenly'}}>
                 <div  className={classes.iconsdiv} >
-                <IconButton color='inherit'size="large" onClick={() => history.push("/")}>
+                <IconButton color='inherit' onClick={() => history.push("/")}>
                   <HomeIcon />
                 </IconButton>
                 </div>
                 <div  className={classes.iconsdiv} onClick={() => history.push("/cart")} >
-                <IconButton color='inherit'size="large">
+                <IconButton color='inherit'>
                   <ShoppingCartCheckoutIcon />
                 </IconButton>
                 </div>
                 <div  className={classes.iconsdiv} >
-                <IconButton color='inherit'size="large" onClick={handleLoginLogout}>
+                <IconButton color='inherit' onClick={handleLoginLogout}>
                   {(currentUser) ?((localStorage.pic)?<Avatar src={localStorage.pic} sx={{ width: 30, height: 30 }}/>:<AccountCircleIcon/>)
                    : <AccountCircleOutlinedIcon />
                   }
                 </IconButton>
                 </div>
           </Box>
-        </Toolbar>
+        </div>
       </AppBar>
     </div>
     )

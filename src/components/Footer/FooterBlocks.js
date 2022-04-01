@@ -1,14 +1,14 @@
 import React from 'react'
-import {Typography,Box} from "@mui/material";
+import {Box} from "@mui/material";
 function FooterBlocks({title,arr, classes}) {
   return (<div>
       
       <Box>
-            <Box><Typography variant="h5" >{title}</Typography></Box>
+            <Box><div>{title}</div></Box>
             <br/>
             {
                   arr.map((ele,i) => {
-                        return(<Box key={i}><Typography variant="subtitle1"  className={classes.hover} >{ele}</Typography></Box>)   
+                        return(<Box key={i}><div  className={classes.hover} >{ele}</div></Box>)   
                   })
             }
             

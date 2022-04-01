@@ -2,7 +2,32 @@ import {makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
          
       toolbar: {
-            display: 'flex', justifyContent: 'space-between', flexGrow: 1,
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexGrow: 1,
+            
+            alignItems: 'center',
+      },
+      toolbarLeft:{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-evenly'
+      },
+      iconsdiv:{   
+            marginRight: 20,
+            marginLeft: 20,
+            [theme.breakpoints.down('tablet')]:{
+                  marginRight: 8,
+                  marginLeft: 8,
+            },
+      },
+      siteLogo:{
+            height: 60,
+            width: 150,
+            [theme.breakpoints.down('mobile')]:{
+                  height:45,
+                  width:100,          
+            }
       },
       search: {
             position: 'relative',
@@ -10,7 +35,7 @@ export default makeStyles((theme) => ({
             backgroundColor: 'white',
             marginRight: 2,
             marginLeft: 0,
-            width: 800,
+            width: 700,
             height: 40,
             display:'flex',
             alignItems: 'center',
@@ -27,7 +52,5 @@ export default makeStyles((theme) => ({
       inputInput: {
             padding: 1, paddingLeft: 5 , width: '100%'
       },
-      iconsdiv:{
-            marginRight: 30,
-      }
+      
 }))
