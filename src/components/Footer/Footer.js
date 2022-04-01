@@ -10,12 +10,12 @@ const useStyles = makeStyles((theme)=>({
             justifyContent: 'space-evenly',
             alignItems: 'center',
             [theme.breakpoints.down('mobile')]: {
-                  fontSize: '12px',
+                  fontSize: '8px',
                   height: '150px',   
             },
             [theme.breakpoints.between('mobile','tablet')]: {
                   height: '180px',
-                  fontSize: '15px',
+                  fontSize: '12px',
             },
             [theme.breakpoints.up('tablet')]: {
                   height: '240px',

@@ -49,40 +49,39 @@ function ItemDetails() {
   }
 
   return (
-    <div style={{padding: "12vh"}}>
+    <div>
       <NavBar />
       <ReactNotifications/>
+      <div style={{margin: "10vh 12vh 10vh 10vh"}}>
       <ArrowLeftIcon className={classes.backButton} onClick={() => history.goBack()} fontSize="large"/>
-      <Grid container  spacing={5}>
-          <Grid item xs={4}>
-            <img src={data.image} className={classes.itemimage} alt="n"/>
-          </Grid>
-          <Grid item xs={8}>
-            <Container className="cardinfo-details">
-              <Typography variant="h3" mb={2}>{data.title} </Typography>
-              <Rating name="read-only" value={data.rating.rate} readOnly/>
-
-              <div className="cardinfo-details-body">
-                <Typography variant="h5"  mt={2}>{data.description}</Typography>
-                <Typography variant="h5" mt={3} mb={3}> Rs {data.price}</Typography>
-                <div className="cardinfo-details-button">
-                  <Grid container >
-                      <Grid item xs={3} >
-                        <Button variant="outlined" size="large" onClick={handelAddToCart}>
-                          <ShoppingCartIcon /> ADD TO CART
-                        </Button>
-                        </Grid>
-                      <Grid item xs={3}>
-                        <Button variant="contained" size="large" onClick={()=>handelCheckout()}>
-                          <FlashOnIcon /> BUY NOW
-                         </Button>
-                      </Grid>
-                  </Grid>
-                </div>
+      <main className={classes.cardInfo}>
+        <div >
+          <img src={data.image} className={classes.cardImage} />
+        </div>
+        <div  className={classes.detailsContainer}>
+          <div className="cardinfo-details-header">
+            <h1 className={classes.itemTitle}>{data.title}</h1>
+          </div>
+          <Rating name="read-only" value={data.rating.rate} readOnly/>
+          <div className={classes.descriptionContainer}>
+            <p className={classes.itemDescription}>{data.description}</p>
+            <h2>$ {data.price}</h2> 
+            <div className={classes.buttonContainer}>
+              <div className={classes.button}>
+                    <Button variant="outlined" size="large"  onClick={handelAddToCart}>
+                      <ShoppingCartIcon /> ADD TO CART
+                    </Button>
               </div>
-            </Container>
-          </Grid>
-        </Grid>  
+              <div className={classes.button}>
+                    <Button variant="contained" size="large" onClick={()=>handelCheckout()}>
+                      <FlashOnIcon /> ORDER NOW
+                    </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      </div>
     </div>
   );
 }

@@ -77,8 +77,7 @@ export default function LoginPage() {
               flexDirection: "column",
               alignItems: "center",
               paddingTop: 10,
-            }}
-          >
+            }}>
             <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
               <LockOutlinedIcon />
             </Avatar>

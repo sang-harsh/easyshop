@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 function App() {
-  
+
   const theme1=createTheme({
     palette:{
       primary: teal,
@@ -31,16 +31,17 @@ function App() {
     },
   });
 
+
   return (
     <ThemeProvider theme={theme1}>
     <AuthProvider>
       <div className="App">
         <Router>
           <Switch>
+            <Route path="/itemDetails" exact component={ItemDetails}/>
             <Route path="/" exact component={MainPage}/>
             <Route path="/login" exact component={LoginPage}/>
             <Route path="/signup" exact component={SignupPage}/>
-            <Route path="/itemDetails" exact component={ItemDetails}/>
             <Route path="/cart" exact component={Cart} />
             <PrivateRoute path="/checkout" exact component={Checkout} />
           </Switch>
