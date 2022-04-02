@@ -87,7 +87,6 @@ function Checkout() {
                         Back
                       </Button>
                     )}
-
                     <Button
                       variant="contained"
                       onClick={handleNext}

@@ -52,35 +52,40 @@ function ItemDetails() {
     <div>
       <NavBar />
       <ReactNotifications/>
-      <div style={{margin: "10vh 12vh 10vh 10vh"}}>
+      <div className={classes.mainContainer}>
       <ArrowLeftIcon className={classes.backButton} onClick={() => history.goBack()} fontSize="large"/>
-      <main className={classes.cardInfo}>
+      <div className={classes.cardInfo}>
         <div >
           <img src={data.image} className={classes.cardImage} />
         </div>
         <div  className={classes.detailsContainer}>
-          <div className="cardinfo-details-header">
-            <h1 className={classes.itemTitle}>{data.title}</h1>
-          </div>
-          <Rating name="read-only" value={data.rating.rate} readOnly/>
-          <div className={classes.descriptionContainer}>
-            <p className={classes.itemDescription}>{data.description}</p>
-            <h2>$ {data.price}</h2> 
-            <div className={classes.buttonContainer}>
-              <div className={classes.button}>
-                    <Button variant="outlined" size="large"  onClick={handelAddToCart}>
-                      <ShoppingCartIcon /> ADD TO CART
-                    </Button>
-              </div>
-              <div className={classes.button}>
-                    <Button variant="contained" size="large" onClick={()=>handelCheckout()}>
-                      <FlashOnIcon /> ORDER NOW
-                    </Button>
-              </div>
+            <div>
+              <h1 className={classes.itemTitle}>{data.title}</h1>
             </div>
-          </div>
+
+            <Rating name="read-only" value={data.rating.rate} readOnly/>
+            <div className={classes.itemDescription}>{data.description}</div>
+
+            <div>
+              <h1 className={classes.priceDiv}>$ {data.price}</h1>
+            </div>
+
+            <div className={classes.buttonContainer}>
+          
+                  <Button variant="outlined"  onClick={handelAddToCart}
+                    className={classes.button} sx={{ marginRight: 2 }}>
+                        <ShoppingCartIcon /> ADD TO CART
+                  </Button>
+           
+                  <Button variant="contained" onClick={()=>handelCheckout()}
+                   className={classes.button}>
+                        <FlashOnIcon /> ORDER NOW
+                  </Button>
+              
+            </div>
         </div>
-      </main>
+        
+      </div>
       </div>
     </div>
   );

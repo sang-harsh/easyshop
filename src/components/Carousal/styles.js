@@ -2,7 +2,10 @@ import {makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
          
       container:{
-            marginTop: '6vh',
+            marginTop:'8vh',
+            [theme.breakpoints.down('tablet')]: {
+                  marginTop:'6vh',
+            },
       },
       carousalImage:{
             [theme.breakpoints.down('mobile')]: {

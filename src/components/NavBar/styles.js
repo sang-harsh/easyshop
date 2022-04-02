@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
       siteLogo:{
             height: 60,
             width: 150,
-            [theme.breakpoints.down('mobile')]:{
+            [theme.breakpoints.down('tablet')]:{
                   height:45,
                   width:100,          
             }

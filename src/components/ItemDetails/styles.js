@@ -1,21 +1,34 @@
 import {makeStyles } from '@mui/styles';
 export default makeStyles((theme)=>({
-      backButton : {
-            borderRadius:"30px",
-            padding: "10px",
-            backgroundColor: "#d3d3d3",
+      mainContainer:{
             [theme.breakpoints.up('laptop')]:{
-                  marginLeft: 10,
-                  marginTop: 20,
+                  margin: "12vh 10vh 10vh 10vh",
             },
             [theme.breakpoints.between('tablet','laptop')]:{
-                  marginLeft: 5,
-                  marginTop: 20,
+                  margin: "12vh 10vh 10vh 10vh",
             },
-            [theme.breakpoints.down('tablet')]:{
-                  marginLeft: 0,
-                  marginTop: 20,
-            },          
+            [theme.breakpoints.between('mobile','tablet')]:{
+                  margin: "10vh 10vh 10vh 5vh"
+            },
+            [theme.breakpoints.down('mobile')]:{
+                  margin: "10vh 3vh 10vh 3vh",
+            },    
+      },
+      backButton : {
+            borderRadius:"30px",
+            backgroundColor: "#d3d3d3",
+            [theme.breakpoints.up('laptop')]:{
+                  padding: "10px",
+            },
+            [theme.breakpoints.between('tablet','laptop')]:{ 
+                  padding: "10px",
+            },
+            [theme.breakpoints.between('mobile','tablet')]:{
+                  padding: "8px",
+            },
+            [theme.breakpoints.down('mobile')]:{
+                  padding: "6px",
+            },         
       },
       cardInfo:{
             display: 'flex',
@@ -27,50 +40,81 @@ export default makeStyles((theme)=>({
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  textAlign: 'center',
-
+                  textAlign: 'justify',
             }
       },
       cardImage: {
             height: '60vh',
             width: '25vw',
+            [theme.breakpoints.down('laptop')]:{
+                  height: '50vh',
+                  width: '25vw',
+            },
             [theme.breakpoints.down('tablet')]:{
                   height: '20vh',
                   width: '20vw',
             }
       },
       detailsContainer:{
+            display: 'flex',
+            flexDirection: 'column',
             height: '80vh',
             width: '55vw',
+            [theme.breakpoints.down('laptop')]:{
+                  height: 'auto',
+                  width: '50vw',
+                  paddingBottom: '0.5vh',
+                  marginBottom: '0.5vh',
+            },
             [theme.breakpoints.down('tablet')]:{
                   height: 'auto',
                   width: '90vw',
                   paddingBottom: '0.5vh',
                   marginBottom: '0.5vh',
-            }
+                  alignItems: 'center',
+            },
       },
       itemTitle:{
             fontSize: 40,
             alignSelf: 'center',
+            [theme.breakpoints.down('laptop')]:{
+                  fontSize: 25,
+            },
             [theme.breakpoints.down('tablet')]:{
                   fontSize: 20,
+            },
+      },
+     
+      itemDescription:{
+            marginTop: 10,
+            fontSize: 20,
+            [theme.breakpoints.down('laptop')]:{
+                  fontSize: 16,
+            },
+            [theme.breakpoints.down('tablet')]:{
+                  fontSize: 14,
             }
       },
-      descriptionContainer:{
-            display: 'flex',
-            flexDirection: 'column',   
-      },
-      itemDescription:{
-            fontSize: 20,
+      priceDiv:{
+            fontSize: 25,
+            [theme.breakpoints.down('laptop')]:{
+                  fontSize: 25,
+            },
             [theme.breakpoints.down('tablet')]:{
-                  fontSize: 15,
+                  fontSize: 20,
             }
       },
       buttonContainer:{
             display:'flex',
             justifyContent: 'center',
+            [theme.breakpoints.up('tablet')]:{
+                  justifyContent: 'flex-start',
+            }
       },
       button:{
-            marginRight: 20,
+            width: 148,
+            [theme.breakpoints.down('tablet')]:{
+                  width: 119,
+            }
       }
 }))
