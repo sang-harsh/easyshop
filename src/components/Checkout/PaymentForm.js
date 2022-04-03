@@ -12,7 +12,7 @@ export default function PaymentForm() {
         Payment method
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} mobile={6}>
           <TextField
             required
             id="cardName"
@@ -22,7 +22,7 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} mobile={6}>
           <TextField
             required
             id="cardNumber"
@@ -32,7 +32,7 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6} >
           <TextField
             required
             id="expDate"
@@ -42,7 +42,7 @@ export default function PaymentForm() {
             variant="standard"
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={6}>
           <TextField
             required
             id="cvv"

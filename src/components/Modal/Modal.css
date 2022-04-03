@@ -1,0 +1,47 @@
+/* Modal */
+
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;  
+  position:fixed;
+  z-index: 1;
+}
+
+.modalContainer {
+  width: 400px;
+  height: 350px;
+  border-radius: 12px;
+  background-color: white;
+  border: 2px solid black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-around;
+  padding: 25px;
+  color: black;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.modalTitle {
+  font-size: 25px;
+  color: #009688;
+}
+.modalHeader button {
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+  color: #009688;
+}
+.modal-button-container{
+  padding: 10;
+  display: flex;
+  justify-content: space-between;
+}

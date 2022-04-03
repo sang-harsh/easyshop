@@ -11,7 +11,7 @@ export default makeStyles((theme)=>({
                   margin: "10vh 10vh 10vh 5vh"
             },
             [theme.breakpoints.down('mobile')]:{
-                  margin: "10vh 3vh 10vh 3vh",
+                  margin: "60px 3vh 10vh 3vh",
             },    
       },
       backButton : {
@@ -96,12 +96,17 @@ export default makeStyles((theme)=>({
             }
       },
       priceDiv:{
+            [theme.breakpoints.up('laptop')]:{
             fontSize: 25,
-            [theme.breakpoints.down('laptop')]:{
-                  fontSize: 25,
             },
-            [theme.breakpoints.down('tablet')]:{
+            [theme.breakpoints.between('tablet','laptop')]:{
+                  fontSize: 22,
+            },
+            [theme.breakpoints.between('mobile','tablet')]:{
                   fontSize: 20,
+            },
+            [theme.breakpoints.down('mobile')]:{
+                  fontSize: 18,
             }
       },
       buttonContainer:{

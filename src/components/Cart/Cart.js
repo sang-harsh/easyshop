@@ -10,9 +10,12 @@ import { useHistory } from 'react-router-dom';
 import CARTS from "../../utils/emptyCart.gif";
 import {useAuth} from '../AuthContext.js';
 
+import Modal from "../Modal/Modal";
+
 function Cart() {
   const data = JSON.parse(localStorage.getItem("cart"));
   const [price,setPrice]=useState();
+  const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
   const {notification} =useAuth();
 
@@ -49,18 +52,17 @@ function Cart() {
     history.push("/cart");
     notification("Warning!!", "Item Removed from the cart","danger");
   }
-   function handelCheckout(){
-    history.push("/checkout");
-  }
 
   return (
     <div >
+      {modalOpen && <Modal setOpenModal={setModalOpen} price={price} data={data} setModalOpen={setModalOpen}/>}
       <ReactNotifications />
       <NavBar/>
+      
       {data!== null && data!==undefined && data.length > 0?
       (<div className='cart-parent'>
           <div className="items-section">
-            <h2 style={{marginLeft:"10px"}}>Shopping Cart ({data.length})</h2>
+          <h2 style={{marginLeft:"10px"}}>Shopping Cart ({data.length})</h2> 
                 { data.map((element,i)=>{ return(
                   <div className="container">
                   <div className="item-image">
@@ -80,9 +82,11 @@ function Cart() {
                         </div>
                         <button className="button teal" onClick={()=>handleQuantityButtons(element,"ADD")}>+</button>
                       </div>
+                      <div className="mr">
                       <Button variant="contained" size="small" component="div" onClick={()=>handelRemoveItem(element)}>
                           <DeleteIcon /> Remove
                         </Button>
+                      </div>
                     </div>
                     
                   </div>
@@ -92,47 +96,49 @@ function Cart() {
                 
             
           </div>
+                
           <div className="price-section">
-          <h2>Price Section</h2>
-          <div>
-            <div className="border-box">
-            <div className="boxrow bold">
-              <div>PRICE ({data.length} Items)</div>
-              <div>$ {price}</div>
-            </div>
-            <div className="boxrow">
-              <div>Discount</div>
-              <div className="green-text">${Math.round((price / 4) * 100) / 100}</div>
-            </div>
-            <div className="boxrow ">
-              <div>Shipping</div>
-              <div className="green-text">FREE</div>
-            </div>
-            </div>
-            <div className="border-box">
-            <div className=" boxrow bold">
-              <div>TOTAL AMOUNT</div> 
-              <div>${Math.round((price - Math.round((price / 4) * 100) / 100) * 100) / 100}</div>
-            </div>
-            </div>
-          </div>
-          <Button variant="contained" size="large" style={{marginTop:20}} onClick={()=>handelCheckout()}>
-            <FlashOnIcon /> BUY NOW
-          </Button>
+              <h2>Price Section</h2>
+              <div className="border-container">
+                <div className="boxrow bold">
+                  <div>PRICE ({data.length} Items)</div>
+                  <div>$ {price}</div>
+                </div>
+                <div className="boxrow">
+                  <div>Discount</div>
+                  <div className="green-text">${Math.round((price / 4) * 100) / 100}</div>
+                </div>
+                <div className="boxrow">
+                  <div>Shipping</div>
+                  <div className="green-text">FREE</div>
+                </div>
+                
+
+                <div className=" boxrow bold" style={{borderTop: '1px solid rgb(196, 193, 193)'}}>
+                  <div>TOTAL AMOUNT</div> 
+                  <div>${Math.round((price - Math.round((price / 4) * 100) / 100) * 100) / 100}</div>
+                </div>
+
+              </div>
+              
+              <Button variant="contained" size="large" style={{marginTop:20}} onClick={() => {setModalOpen(true);}}>
+                <FlashOnIcon /> BUY NOW
+              </Button>
           </div>
 
 
 
       </div>):(
-      <div className="empty-cart">
-          <h1>           Cart is Empty          </h1>
-          <strong>
-            <Link to="/">Continue shopping</Link>
-          </strong>
-          <img src={CARTS} alt="empty cart" />
-        </div>
-      
-      )}
+          <div className="empty-cart">
+              <h1>           Cart is Empty          </h1>
+              <strong>
+                <Link to="/">Continue shopping</Link>
+              </strong>
+              <img src={CARTS} alt="empty cart" />
+            </div>
+          
+          )}
+    
     </div>
   )
 }

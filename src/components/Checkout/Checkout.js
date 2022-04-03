@@ -46,10 +46,10 @@ function Checkout() {
     <div>
       <NavBar/>
       <CssBaseline/>
-      <Container component="main" maxWidth="sm" sx={{ mb: 4 , mt: 10}}>
+      <Container component="main" maxWidth="mobile" sx={{ mb: 4 , mt: 10}}>
           <Paper
             variant="outlined"
-            sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+            sx={{ my: { xs: 3, mobile: 6 }, p: { xs: 2, mobile: 3 } }}
           >
             <Typography component="h1" variant="h4" align="center">
               Checkout
