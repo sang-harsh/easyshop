@@ -6,7 +6,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 import { useHistory } from "react-router-dom";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
-import { Container,Grid,Typography, Rating, Button} from "@mui/material";
+import { Rating, Button} from "@mui/material";
 import {ReactNotifications} from "react-notifications-component";
 import {useAuth} from '../AuthContext.js'
 
@@ -56,7 +56,7 @@ function ItemDetails() {
       <ArrowLeftIcon className={classes.backButton} onClick={() => history.goBack()} fontSize="large"/>
       <div className={classes.cardInfo}>
         <div >
-          <img src={data.image} className={classes.cardImage} />
+          <img src={data.image} className={classes.cardImage} alt="NA" />
         </div>
         <div  className={classes.detailsContainer}>
             <div>
@@ -67,7 +67,7 @@ function ItemDetails() {
             <div className={classes.itemDescription}>{data.description}</div>
 
             <div>
-              <h1 className={classes.priceDiv}>$ {data.price}</h1>
+              <h1 className={classes.priceTag}>$ {data.price}</h1>
             </div>
 
             <div className={classes.buttonContainer}>

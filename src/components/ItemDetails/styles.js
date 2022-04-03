@@ -82,6 +82,7 @@ export default makeStyles((theme)=>({
             },
             [theme.breakpoints.down('tablet')]:{
                   fontSize: 20,
+                  textAlign: 'center',
             },
       },
      
@@ -96,6 +97,9 @@ export default makeStyles((theme)=>({
             }
       },
       priceDiv:{
+            width: '100%',
+      },
+      priceTag:{
             [theme.breakpoints.up('laptop')]:{
             fontSize: 25,
             },
@@ -106,7 +110,7 @@ export default makeStyles((theme)=>({
                   fontSize: 20,
             },
             [theme.breakpoints.down('mobile')]:{
-                  fontSize: 18,
+                  fontSize: 16,
             }
       },
       buttonContainer:{

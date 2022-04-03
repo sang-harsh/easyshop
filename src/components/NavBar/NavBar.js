@@ -38,11 +38,12 @@ function NavBar() {
         <div className={classes.toolbar} >
           <div className={classes.toolbarLeft}>
             <div  className={classes.iconsdiv} >
-                <IconButton color='inherit' >
-                  <MenuIcon className={classes.icons}/>
+                <IconButton color='inherit' 
+                onClick={() => notification("Devloper Notification!", "Feature not yet added", "danger")} >
+                    <MenuIcon className={classes.icons} />
                 </IconButton>
             </div>
-                <div className={classes.iconsdiv}  >             
+                <div className={classes.iconsdiv}  onClick={() => history.push("/")}>             
                     <img src={TEALLOGO} alt="Not found" className={classes.siteLogo}/>
                 </div>
           </div>

@@ -64,7 +64,7 @@ function Cart() {
           <div className="items-section">
           <h2 style={{marginLeft:"10px"}}>Shopping Cart ({data.length})</h2> 
                 { data.map((element,i)=>{ return(
-                  <div className="container">
+                  <div className="container" key={i}>
                   <div className="item-image">
                     <img className="img"src={element.image} alt="Not found" />
                   </div>
@@ -130,7 +130,7 @@ function Cart() {
 
       </div>):(
           <div className="empty-cart">
-              <h1>           Cart is Empty          </h1>
+              <h1>Cart is Empty</h1>
               <strong>
                 <Link to="/">Continue shopping</Link>
               </strong>

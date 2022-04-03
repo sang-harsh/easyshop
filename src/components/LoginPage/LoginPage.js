@@ -37,7 +37,7 @@ export default function LoginPage() {
   
   const emailRef = useRef();
   const passwordRef = useRef();
-  const {login,signInWithGoogle,notification} = useAuth();
+  const {login,signInWithGoogle,notification,currentUser} = useAuth();
   const history = useHistory();
   const data =  JSON.parse(localStorage.getItem("cart"));
   const flag = JSON.parse(localStorage.getItem("buynow"));
@@ -63,6 +63,10 @@ export default function LoginPage() {
         "Input Can't be empty ..","Please Fill All the Fields","danger");
     }
   };
+
+  if(currentUser){
+    history.push("/");
+  }
 
   return (
     <div >
