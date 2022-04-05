@@ -74,7 +74,7 @@ function Cart() {
                     <Rating name="read-only" value={element.rating.rate} readOnly/>
                     <h3>Catagory: {element.category}</h3>
                     <h3>Price: {element.price}</h3>
-                    <div className="change">
+                    <div className="change mb">
                       <div className="item-quantity-buttons">
                         <button className="button teal" onClick={()=>handleQuantityButtons(element,"SUB")}>-</button>
                         <div className="item-quantity-value">

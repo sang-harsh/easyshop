@@ -100,17 +100,21 @@ export default makeStyles((theme)=>({
             width: '100%',
       },
       priceTag:{
+            display: 'flex',
+            fontWeight: 500,
+            paddingTop: 10,
+            paddingBottom: 10,
             [theme.breakpoints.up('laptop')]:{
             fontSize: 25,
             },
             [theme.breakpoints.between('tablet','laptop')]:{
-                  fontSize: 22,
+                  fontSize: 20,
             },
             [theme.breakpoints.between('mobile','tablet')]:{
                   fontSize: 20,
             },
             [theme.breakpoints.down('mobile')]:{
-                  fontSize: 16,
+                  fontSize: 18,
             }
       },
       buttonContainer:{

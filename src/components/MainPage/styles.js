@@ -4,7 +4,7 @@ export default makeStyles((theme) => ({
       greyBox:{
             display:"flex",
             flexWrap: "wrap",
-            justifyContent: "space-evenly",
+            justifyContent: "space-around",
       },
       card:{
             display:"flex",

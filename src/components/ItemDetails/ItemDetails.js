@@ -67,7 +67,7 @@ function ItemDetails() {
             <div className={classes.itemDescription}>{data.description}</div>
 
             <div>
-              <h1 className={classes.priceTag}>$ {data.price}</h1>
+              <div className={classes.priceTag}><div> $ </div> <div>{data.price}</div></div>
             </div>
 
             <div className={classes.buttonContainer}>

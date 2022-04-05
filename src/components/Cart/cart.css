@@ -18,7 +18,7 @@
   justify-content: space-evenly; */
 }
 .container {
-  height: 250px;
+  min-height: 250px;
   width: 700px;
   display: flex;
   justify-content: space-around;
@@ -38,7 +38,7 @@
 
 }
 .details {
-  height: 30vh;
+  min-height: 30vh;
   width: 35vw;
 }
 .item-quantity-buttons {
@@ -101,7 +101,7 @@
     font-size: 16px;
   }
   .container {
-    height: 250px;
+    min-height: 250px;
     width: 550px;
     display: flex;
     justify-content: space-around;
@@ -110,7 +110,7 @@
     margin: 10px;
   }
   .details {
-    height: 30vh;
+    min-height: 30vh;
     width: 30vw;
   }
   .price-section {
@@ -131,7 +131,7 @@
     font-size: 12px;
   }
   .container {
-    height: 200px;
+    min-height: 200px;
     width: 500px;
     display: flex;
     justify-content: space-around;
@@ -148,7 +148,7 @@
     width: 10vw;
   }
   .details {
-    height: 30vh;
+    min-height: 30vh;
     width: 35vw;
   }
   .price-section {
@@ -185,7 +185,7 @@
     align-items: center;
   }
   .container {
-    height: 200px;
+    min-height: 200px;
     width: 450px;
     display: flex;
     justify-content: space-evenly;
@@ -197,7 +197,7 @@
   .item-image {
     display: flex;
     justify-content: center;
-    width: 25vw;
+    width: 30vw;
   }
   .img {
     height: 20vh;
@@ -212,9 +212,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 10;
   }
   .mr {
     margin-right: 20px;
+  }
+  .mb {
+    margin-bottom: 10px;
   }
   .price-section {
     width: 400px;
