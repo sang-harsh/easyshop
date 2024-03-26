@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11",
     "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
     "@material-ui/core": "5.0.0-beta.5",
