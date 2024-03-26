@@ -10,7 +10,7 @@ import CARTS from "../../utils/emptyCart.gif";
 import {useAuth} from '../AuthContext.js';
 
 import Modal from "../Modal/Modal";
-import { DISCOUNT_PERCENTAGE, SHIPPING_CHARGES } from '../../client-constants.js';
+import * as Constants from 'constants';
 
 function Cart() {
   const data = JSON.parse(localStorage.getItem("cart"));
@@ -29,7 +29,7 @@ function Cart() {
       })
     }
     idx = parseFloat(idx.toFixed(2));
-    const newAmount = idx - (idx * DISCOUNT_PERCENTAGE / 100); // calc for discount
+    const newAmount = idx - (idx * Constants.DISCOUNT_PERCENTAGE / 100); // calc for discount
     setPrice(idx);
     setDiscountedAmount(parseFloat(newAmount.toFixed(2)));
   }, [data]);
@@ -115,18 +115,18 @@ function Cart() {
                   <div>${price}</div>
                 </div>
                 <div className="boxRow">
-                  <div>After {DISCOUNT_PERCENTAGE}% Discount</div>
+                  <div>After {Constants.DISCOUNT_PERCENTAGE}% Discount</div>
                   <div className="green-text">${discountedAmount}</div>
                 </div>
                 <div className="boxRow">
                   <div>Shipping</div>
-                  <div className="green-text">${SHIPPING_CHARGES}</div>
+                  <div className="green-text">${Constants.SHIPPING_CHARGES}</div>
                 </div>
                 
 
                 <div className=" boxRow bold" style={{borderTop: '1px solid rgb(196, 193, 193)'}}>
                   <div>TOTAL AMOUNT</div> 
-                  <div>${parseFloat((discountedAmount+SHIPPING_CHARGES).toFixed(2))}</div>
+                  <div>${parseFloat((discountedAmount+Constants.SHIPPING_CHARGES).toFixed(2))}</div>
                 </div>
 
               </div>

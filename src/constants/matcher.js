@@ -1,6 +1,5 @@
-/*
- * This file contains client constants for the EasyShop application.
+/**
+ * Constants used inside components
  */
-
 export const DISCOUNT_PERCENTAGE = 5;
 export const SHIPPING_CHARGES = 10;
