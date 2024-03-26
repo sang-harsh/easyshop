@@ -12,11 +12,12 @@ function MainPage() {
       const classes = useStyles();
       const [products, setProducts] = useState([]);
       const history = useHistory();
+      // eslint-disable-next-line
       const isMobile = useMediaQuery('(max-width:768px)');
 
       async function getData() {
-        let response = await fetch("https://fakestoreapi.com/products");
-        let data = await response.json();
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
         if (data) {
           setProducts(data);
         }

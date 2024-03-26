@@ -11,12 +11,13 @@ import useStyles from './styles.js';
 
 function CarousalCard() {
     const classes = useStyles();
+    // eslint-disable-next-line
     const isMobile = useMediaQuery('(max-width: 768px)');
     const imagesArray = [card1,card2,card3,card4,card5];
   return (
     <div className={classes.container}>
         <Carousel infiniteLoop interval={3000} autoPlay showThumbs={false}>
-          {
+          { // Need to remove array index from key or any other way to handle key
             imagesArray.map((element,i)=>{
                 return(
                     <div key={i}>
