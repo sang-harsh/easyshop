@@ -40,10 +40,10 @@ export function AuthProvider({children}) {
 
                   if((data!==null && data!==undefined)||flag===true){
                         notification("Login Successfully!", "Proceeding to Checkout", "success");
-                        setTimeout( function() {history.push("/checkout")}, 1000); 
+                        setTimeout( function() {history && history.push("/checkout")}, 1000); 
                   }else{  
                         notification("Wonderful!", "Login Successfully", "success");
-                        setTimeout( function() {history.push("/")}, 1000); 
+                        setTimeout( function() {history && history.push("/")}, 1000); 
                   }
 
             } catch (error) {

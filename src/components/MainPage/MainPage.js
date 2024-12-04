@@ -40,7 +40,7 @@ function MainPage() {
           <div className={classes.greyBox}>
       
     
-          {products.length !== 0 ? (
+          {products && products.length !== 0 ? (
           products.map((element, i) => (
 
 

@@ -46,7 +46,6 @@ export default makeStyles((theme) => ({
       },
       inputRoot: {
             color: 'black',
-            position: 'absolute',
             paddingRight: 10
       },
       inputInput: {
