@@ -16,6 +16,7 @@
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.4",
     "@testing-library/user-event": "13.5.0",
+    "axios": "1.7.9",
     "firebase": "7.20.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -32,6 +33,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +56,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "3.2.3"
   }
 }

@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import {useHistory} from "react-router-dom";
 import {ReactNotifications} from "react-notifications-component";
 import LOADING from "../../utils/loading.gif";
+import { getItems } from '../../api';
 
 function MainPage() {
       const classes = useStyles();
@@ -16,8 +17,13 @@ function MainPage() {
       const isMobile = useMediaQuery('(max-width:768px)');
 
       async function getData() {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
+        const response = await getItems();
+        let data;
+        if (response.json && typeof response.json === 'function') {
+          data = await response.json();
+        } else {
+          data = response;
+        }
         if (data) {
           setProducts(data);
         }
