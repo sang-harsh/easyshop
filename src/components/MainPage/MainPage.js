@@ -17,15 +17,12 @@ function MainPage() {
       const isMobile = useMediaQuery('(max-width:768px)');
 
       async function getData() {
-        const response = await getItems();
-        let data;
+        let response = await getItems();
         if (response.json && typeof response.json === 'function') {
-          data = await response.json();
-        } else {
-          data = response;
+          response = await response.json();
         }
-        if (data) {
-          setProducts(data);
+        if (response && response.length > 0) {
+          setProducts(response);
         }
       }
       useEffect(() => {
