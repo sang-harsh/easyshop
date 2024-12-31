@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api'; // Need to change this to the deployed API URL
+const API_BASE_URL = process.env.REACT_APP_SHOP_LIST_API + '/api';
+
 
 export const getItems = async () => {
   try {
