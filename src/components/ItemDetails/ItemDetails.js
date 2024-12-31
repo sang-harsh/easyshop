@@ -15,21 +15,20 @@ function ItemDetails() {
   const history = useHistory();
   const classes = useStyles();
   const {notification} = useAuth();
-  let data = JSON.parse(localStorage.getItem("card"));
+  const data = JSON.parse(localStorage.getItem("card"));
   data.quantity = 1;
 
   function handelAddToCart() {
-    let cartArray = [];
-    let prevData = JSON.parse(localStorage.getItem("cart"));
+    const cartArray = [];
+    const prevData = JSON.parse(localStorage.getItem("cart"));
 
     if (prevData === undefined || prevData === null) {
       cartArray.push(data);
       localStorage.setItem("cart", JSON.stringify(cartArray));
-       //console.log("ITEM IS ADD TO CART");
       notification("Wonderful!", "ITEM IS ADD TO CART", "success");
       //setTimeout(() => history.push("/cardinfo"), 1000);
     } else {
-      let index = prevData.findIndex((element) => element.id === data.id);
+      const index = prevData.findIndex((element) => element.id === data.id);
       if (index < 0) {
         cartArray.push(...prevData);
         cartArray.push(data);

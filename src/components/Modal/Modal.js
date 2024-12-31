@@ -23,19 +23,19 @@ function Modal({ setOpenModal,price,data,setModalOpen}) {
         </div>
         <div className="modal-border-container">
 
-            <div className="modal-boxrow bold">
+            <div className="modal-boxRow bold">
               <div>PRICE ({data.length} Items)</div>
               <div>$ {price}</div>
             </div>
-            <div className="modal-boxrow">
+            <div className="modal-boxRow">
                <div>Discount</div>
                <div className="green-text">${Math.round((price / 4) * 100) / 100}</div>
             </div>
-            <div className="modal-boxrow">
+            <div className="modal-boxRow">
                <div>Shipping</div>
                <div className="green-text">FREE</div>
             </div>
-            <div className=" modal-boxrow bold" style={{borderTop: '1px solid rgb(196, 193, 193)'}}>
+            <div className=" modal-boxRow bold" style={{borderTop: '1px solid rgb(196, 193, 193)'}}>
               <div>TOTAL AMOUNT</div> 
               <div>${Math.round((price - Math.round((price / 4) * 100) / 100) * 100) / 100}</div>
             </div>

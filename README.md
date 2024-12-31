@@ -1,5 +1,7 @@
 # easyshop
 
+Link -> https://sang-harsh.github.io/easyshop/#/
+
 React JS, React Router, Firebase
 
 #tasks ahead

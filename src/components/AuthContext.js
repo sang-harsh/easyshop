@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import {auth} from '../firebase';
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
 import { useHistory} from "react-router-dom";
 import {Store} from "react-notifications-component";
 
@@ -14,7 +14,7 @@ export function useAuth(){
 export function AuthProvider({children}) {
       const [currentUser, setCurrentUser] = useState();
       const history = useHistory();
-      var provider = new firebase.auth.GoogleAuthProvider();
+      const provider = new firebase.auth.GoogleAuthProvider();
       const data =  JSON.parse(localStorage.getItem("cart"));
       const flag = JSON.parse(localStorage.getItem("buynow"));
 
@@ -40,10 +40,10 @@ export function AuthProvider({children}) {
 
                   if((data!==null && data!==undefined)||flag===true){
                         notification("Login Successfully!", "Proceeding to Checkout", "success");
-                        setTimeout( function() {history.push("/checkout")}, 1000); 
+                        setTimeout( function() {history?.push("/checkout")}, 1000); 
                   }else{  
                         notification("Wonderful!", "Login Successfully", "success");
-                        setTimeout( function() {history.push("/")}, 1000); 
+                        setTimeout( function() {history?.push("/")}, 1000); 
                   }
 
             } catch (error) {
@@ -68,11 +68,12 @@ export function AuthProvider({children}) {
               animationIn: ["animated", "animate__fadeIn"],
               animationOut: ["animated", "animate__fadeOut"],
               dismiss: {
-                duration: 1000,
-              },
+                duration: 1000
+              }
             });
           }
-
+      
+      // use useMemo hook here
       const value = {
             currentUser,
             signup,

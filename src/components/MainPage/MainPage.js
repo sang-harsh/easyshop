@@ -7,18 +7,22 @@ import Footer from "../Footer/Footer";
 import {useHistory} from "react-router-dom";
 import {ReactNotifications} from "react-notifications-component";
 import LOADING from "../../utils/loading.gif";
+import { getItems } from '../../api';
 
 function MainPage() {
       const classes = useStyles();
       const [products, setProducts] = useState([]);
       const history = useHistory();
+      // eslint-disable-next-line
       const isMobile = useMediaQuery('(max-width:768px)');
 
       async function getData() {
-        let response = await fetch("https://fakestoreapi.com/products");
-        let data = await response.json();
-        if (data) {
-          setProducts(data);
+        let response = await getItems();
+        if (response.json && typeof response.json === 'function') {
+          response = await response.json();
+        }
+        if (response && response.length > 0) {
+          setProducts(response);
         }
       }
       useEffect(() => {
@@ -39,7 +43,7 @@ function MainPage() {
           <div className={classes.greyBox}>
       
     
-          {products.length !== 0 ? (
+          {products && products.length !== 0 ? (
           products.map((element, i) => (
 
 

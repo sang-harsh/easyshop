@@ -1,20 +1,21 @@
 import {React,useState,useEffect} from 'react';
 import  NavBar from '../NavBar/NavBar.js'
 import {ReactNotifications} from "react-notifications-component";
-import {Link} from "react-router-dom";
 import './cart.css';
 import {Rating,Button} from "@mui/material";
 import FlashOnIcon from "@mui/icons-material/FlashOn";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import CARTS from "../../utils/emptyCart.gif";
 import {useAuth} from '../AuthContext.js';
 
 import Modal from "../Modal/Modal";
+import * as Constants from 'constants';
 
 function Cart() {
   const data = JSON.parse(localStorage.getItem("cart"));
   const [price,setPrice]=useState();
+  const [discountedAmount,setDiscountedAmount]=useState();
   const [modalOpen, setModalOpen] = useState(false);
   const history = useHistory();
   const {notification} =useAuth();
@@ -22,32 +23,40 @@ function Cart() {
   useEffect(() => {
     let idx = 0;
     if(data!== undefined && data!==null){
-      data.map((element)=>(idx = idx +(element.quantity*element.price)))
+      data.map((element)=>{
+        idx = idx +(element.quantity*element.price);
+        return element;
+      })
     }
+    idx = parseFloat(idx.toFixed(2));
+    const newAmount = idx - (idx * Constants.DISCOUNT_PERCENTAGE / 100); // calc for discount
     setPrice(idx);
+    setDiscountedAmount(parseFloat(newAmount.toFixed(2)));
   }, [data]);
   
   function handleQuantityButtons(element,type){
-    let variable = data.indexOf(element);
-    let itemList = data.slice(0,variable);
+    const variable = data.indexOf(element);
+    const itemList = data.slice(0,variable);
     if(type === "ADD"){
       element.quantity = element.quantity + 1;
       itemList.push(element);
     }else if(type === "SUB"){
       if(element.quantity===1){
-        handelRemoveItem(element);
+        handelRemoveItem(element); // Need give warning dialog box here
         
       }else{
         element.quantity = element.quantity - 1;
         itemList.push(element);
       }
+    }else{
+      // Do nothing - we can add code here if we want to add more buttons
     }
     itemList.push(...data.slice(variable+1, data.length));
     localStorage.setItem("cart",JSON.stringify(itemList));
     history.push("/cart");
   }
   function handelRemoveItem(item){
-    let variable = data.filter((element)=> element!== item);
+    const variable = data.filter((element)=> element!== item);
     localStorage.setItem("cart",JSON.stringify(variable));
     history.push("/cart");
     notification("Warning!!", "Item Removed from the cart","danger");
@@ -62,8 +71,9 @@ function Cart() {
       {data!== null && data!==undefined && data.length > 0?
       (<div className='cart-parent'>
           <div className="items-section">
-          <h2 style={{marginLeft:"10px"}}>Shopping Cart ({data.length})</h2> 
-                { data.map((element,i)=>{ return(
+          <h2 style={{marginLeft:"10px"}}>Shopping Cart ({data.length} Items added)</h2> 
+                { data.map((element,i)=>{
+                  return(
                   <div className="container" key={i}>
                   <div className="item-image">
                     <img className="img"src={element.image} alt="Not found" />
@@ -72,8 +82,8 @@ function Cart() {
                   <div className="details">
                     <h3>{element.title}</h3>
                     <Rating name="read-only" value={element.rating.rate} readOnly/>
-                    <h3>Catagory: {element.category}</h3>
-                    <h3>Price: {element.price}</h3>
+                    <h3>Category: {element.category}</h3>
+                    <h3>Price: ${element.price}</h3>
                     <div className="change mb">
                       <div className="item-quantity-buttons">
                         <button className="button teal" onClick={()=>handleQuantityButtons(element,"SUB")}>-</button>
@@ -100,23 +110,23 @@ function Cart() {
           <div className="price-section">
               <h2>Price Section</h2>
               <div className="border-container">
-                <div className="boxrow bold">
-                  <div>PRICE ({data.length} Items)</div>
-                  <div>$ {price}</div>
+                <div className="boxRow bold">
+                  <div>PRICE ({data.length} Items)</div> 
+                  <div>${price}</div>
                 </div>
-                <div className="boxrow">
-                  <div>Discount</div>
-                  <div className="green-text">${Math.round((price / 4) * 100) / 100}</div>
+                <div className="boxRow">
+                  <div>After {Constants.DISCOUNT_PERCENTAGE}% Discount</div>
+                  <div className="green-text">${discountedAmount}</div>
                 </div>
-                <div className="boxrow">
+                <div className="boxRow">
                   <div>Shipping</div>
-                  <div className="green-text">FREE</div>
+                  <div className="green-text">${Constants.SHIPPING_CHARGES}</div>
                 </div>
                 
 
-                <div className=" boxrow bold" style={{borderTop: '1px solid rgb(196, 193, 193)'}}>
+                <div className=" boxRow bold" style={{borderTop: '1px solid rgb(196, 193, 193)'}}>
                   <div>TOTAL AMOUNT</div> 
-                  <div>${Math.round((price - Math.round((price / 4) * 100) / 100) * 100) / 100}</div>
+                  <div>${parseFloat((discountedAmount+Constants.SHIPPING_CHARGES).toFixed(2))}</div>
                 </div>
 
               </div>
